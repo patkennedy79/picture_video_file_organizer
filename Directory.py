@@ -23,26 +23,28 @@ def get_file_extension(filename):
 """
 class Directory(object):
     # Constructor
-    def __init__(self, directory_path, destination_directory):
+    def __init__(self, directory_path, picture_destination_directory, movie_destination_directory):
         self.directory_path = directory_path
-        self.destination_directory = destination_directory
+        self.picture_destination_directory = picture_destination_directory
+        self.movie_destination_directory = movie_destination_directory
         self.files = [ f for f in listdir(self.directory_path) if isfile(join(self.directory_path,f)) ]
         self.files.sort()
 
     def print_details(self):
         print "Directory details:"
         print "    Directory path: %s" % self.directory_path
-        print "    Destination directory: %s" % self.destination_directory
+        print "    Picture Destination directory: %s" % self.picture_destination_directory
+        print "    Movie Destination directory: %s" % self.movie_destination_directory
         print "    Number of files in directory: %s" % len(self.files)
 
     def copy_files_to_destination_directory(self):
         for file in self.files:
             if get_file_extension(file).lower() == ".jpg":
-                current_file = PictureFile(file, self.directory_path, self.destination_directory)
+                current_file = PictureFile(file, self.directory_path, self.picture_destination_directory)
                 current_file.copy_to_destination_directory()
                 current_file.print_details()
             elif get_file_extension(file).lower() == ".mov":
-                current_file = VideoFile(file, self.directory_path, self.destination_directory)
+                current_file = VideoFile(file, self.directory_path, self.movie_destination_directory)
                 current_file.copy_to_destination_directory()
                 current_file.print_details()
             else:

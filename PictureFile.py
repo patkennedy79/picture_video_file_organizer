@@ -19,8 +19,11 @@ class PictureFile(File):
         exif_tags = exifread.process_file(f)
 
         for tag in exif_tags.keys():
-            if tag in ('EXIF DateTimeOriginal'):
+#            if tag in ('EXIF DateTimeOriginal'):
+            if tag == 'EXIF DateTimeOriginal':
                 date_file = str(exif_tags[tag])
                 photo_date = date_file[0:10]
                 self.date_created = str.replace(photo_date, ":", "-")
+                self.destination_directory += self.date_created + '/'
                 print "Picture created on %s" % self.date_created
+                print "Picture dest dir: %s" % self.destination_directory

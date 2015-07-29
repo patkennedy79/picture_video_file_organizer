@@ -1,5 +1,13 @@
 from os.path import isfile, isdir
+from os import mkdir
 from shutil import copy2
+
+def check_directory_name(directory_name):
+    if not directory_name.endswith('/'):
+        return directory_name + '/'
+    else:
+        return directory_name
+
 
 """ Purpose: This class defines a file that will be copied from its source
              directory to a destination directory, if the file does not exist
@@ -7,9 +15,9 @@ from shutil import copy2
 
    Attributes:
        filename: name of the file with its extension, but without the directory
-       source_directory: directory where the file exists without the trailing '/'
+       source_directory: directory where the file exists
        destination_directory: directory where the file will be attempted to be
-                              copied to without the trailing '/'
+                              copied to
        file_size: size (in Bytes) of the file
        date_created: date (in format of "xx-yy-zz", such as "12-23-15" for
                      December 23rd, 2015)
@@ -20,8 +28,8 @@ class File(object):
     # Constructor
     def __init__(self, filename, source_directory, destination_directory):
         self.filename = filename
-        self.source_directory = source_directory
-        self.destination_directory = destination_directory
+        self.source_directory = check_directory_name(source_directory)
+        self.destination_directory = check_directory_name(destination_directory)
         self.file_size = 0
         self.date_created = ""
         self.copy_successful = False
@@ -41,19 +49,19 @@ class File(object):
             print "Destination directory does NOT exist!"
 
             try:
-                mkdir(self.destination_directory + "/" + date_created)
+                mkdir(self.destination_directory)
             except OSError as e:
-                print "Exception: %s" % str(e)
+                print "Mkdir Exception: %s" % str(e)
 
         # Check if the file exists in the destination directory
         if not isfile(self.destination_directory + "/" + self.filename):
             print "File is NOT located in the destination directory!"
-            print "Copying %s to %s/%s" % (self.filename, self.destination_directory, self.filename)
+            print "Copying %s to %s" % (self.filename, self.destination_directory)
 
             try:
-                copy2((self.source_directory + "/" + self.filename), self.destination_directory)
+                copy2((self.source_directory + self.filename), self.destination_directory)
                 self.copy_successful = True
             except OSError as e:
-                print "Exception: %s" % str(e)
+                print "Copy2 Exception: %s" % str(e)
         else:
             print "File exists in the destination directory."

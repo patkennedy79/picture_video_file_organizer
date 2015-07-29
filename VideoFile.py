@@ -58,4 +58,6 @@ class VideoFile(File):
                     # Extract the date from the processed Pacific time
                     movie_creation_date = str(movie_creation_date_and_time_pacific)[0:10]
                     self.date_created = movie_creation_date
-                    print "Date: %s" % movie_creation_date
+                    self.destination_directory += self.date_created + '/'
+                    print "Video created on: %s" % self.date_created
+                    print "Video dest dir: %s" % self.destination_directory
