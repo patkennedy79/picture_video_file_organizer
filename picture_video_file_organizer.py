@@ -2,6 +2,7 @@ from PictureFile import PictureFile
 from VideoFile import VideoFile
 from Directory import Directory
 
+patrick_iphone_source_directory = '/Users/patrickkennedy/Pictures/Patrick_iPhone5s/Camera Roll'
 picture_destination_directory = '/Users/patrickkennedy/Documents/Workspace/picture_video_file_organizer/destination_dir_test/Pictures'
 movie_destination_directory = '/Users/patrickkennedy/Documents/Workspace/picture_video_file_organizer/destination_dir_test/Movies'
 
@@ -15,6 +16,18 @@ print ("Picture/Video File Organizer Application...")
 #file2.copy_to_destination_directory()
 #file2.print_details()
 
-dir1 = Directory('/Users/patrickkennedy/Documents/Workspace/picture_video_file_organizer/source_dir_test', picture_destination_directory, movie_destination_directory)
-dir1.print_details()
-dir1.copy_files_to_destination_directory()
+#file3 = PictureFile('IMG_6198.JPG', patrick_iphone_source_directory, picture_destination_directory)
+#file3.copy_to_destination_directory()
+#file3.print_details()
+
+#file4 = PictureFile('IMG_6149.JPG', patrick_iphone_source_directory, picture_destination_directory)
+#file4.copy_to_destination_directory()
+#file4.print_details()
+
+#dir1 = Directory('/Users/patrickkennedy/Documents/Workspace/picture_video_file_organizer/source_dir_test', picture_destination_directory, movie_destination_directory)
+#dir1.print_details()
+#dir1.copy_files_to_destination_directory()
+
+dir2 = Directory(patrick_iphone_source_directory, picture_destination_directory, movie_destination_directory)
+dir2.print_details()
+dir2.copy_files_to_destination_directory()

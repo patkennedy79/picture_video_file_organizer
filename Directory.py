@@ -4,14 +4,6 @@ from PictureFile import PictureFile
 from VideoFile import VideoFile
 
 
-""" Purpose: This method returns the extension of a file assuming that the
-             extension is only 3 characters in length.
-    Example: Input - 'img_0303.jpg', Output - '.jpg'
-"""
-def get_file_extension(filename):
-    return str(filename)[len(filename)-4:len(filename)]
-
-
 """ Purpose: This class defines a directory that contains any number of Files
              that will be copied from this directory to a destination directory.
 
@@ -39,11 +31,11 @@ class Directory(object):
 
     def copy_files_to_destination_directory(self):
         for file in self.files:
-            if get_file_extension(file).lower() == ".jpg":
+            if file.lower().endswith('.jpg'):
                 current_file = PictureFile(file, self.directory_path, self.picture_destination_directory)
                 current_file.copy_to_destination_directory()
                 current_file.print_details()
-            elif get_file_extension(file).lower() == ".mov":
+            elif file.lower().endswith('.mov'):
                 current_file = VideoFile(file, self.directory_path, self.movie_destination_directory)
                 current_file.copy_to_destination_directory()
                 current_file.print_details()
