@@ -31,9 +31,9 @@ print ("Picture/Video File Organizer Application...")
 #dir1.copy_files_to_destination_directory()
 
 #dir2 = Directory(patrick_iphone_source_directory, picture_destination_directory, movie_destination_directory)
-#dir2.print_details()
 #dir2.copy_files_to_destination_directory()
+#dir2.print_details()
 
 dir3 = DirectoryWithDateSubfolders(test_source_directory, picture_destination_directory, movie_destination_directory)
-dir3.print_details()
 dir3.copy_files_to_destination_directory()
+dir3.print_details()
