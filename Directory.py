@@ -4,6 +4,12 @@ from PictureFile import PictureFile
 from VideoFile import VideoFile
 
 
+def check_directory_name(directory_name):
+    if not directory_name.endswith('/'):
+        return directory_name + '/'
+    else:
+        return directory_name
+
 """ Purpose: This class defines a directory that contains any number of Files
              that will be copied from this directory to a destination directory.
 
