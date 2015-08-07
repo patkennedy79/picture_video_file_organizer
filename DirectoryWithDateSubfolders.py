@@ -39,6 +39,8 @@ class DirectoryWithDateSubfolders(object):
         self.file_count = 0
         self.files_copied = 0
         self.files_not_copied = 0
+        self.files_with_date_found = 0
+        self.files_without_date_found = 0
 
     def print_details(self):
         print "Directory details:"
@@ -48,6 +50,7 @@ class DirectoryWithDateSubfolders(object):
         print "    Number of directories in directory: %s" % len(self.directories)
         print "    Number of files in directory: %s" % self.file_count
         print "      Files copied: %d, Files not copied: %d (sum: %d)" % (self.files_copied, self.files_not_copied, (self.files_copied + self.files_not_copied))
+        print "      Files with date found: %d, Files without date found: %d (sum: %d)" % (self.files_with_date_found, self.files_without_date_found, (self.files_with_date_found + self.files_without_date_found))
 
     def copy_files_to_destination_directory(self):
         for current_folder_original in self.directories:
@@ -56,60 +59,12 @@ class DirectoryWithDateSubfolders(object):
                 current_folder = replace(current_folder_original, "_", "-")
                 print "Digital Camera folder: ...%s..." % current_folder
 
-                # Change into the current folder
-                current_source_directory = self.directory_path + current_folder_original
-                chdir(current_source_directory)
+                current_dir = Directory((self.directory_path + current_folder_original), self.picture_destination_directory, self.movie_destination_directory)
+                current_dir.copy_files_to_destination_directory()
+                current_dir.print_details
 
-                current_file_list = [ f for f in listdir(current_source_directory) if isfile(join(current_source_directory, f)) ]
-                current_file_list.sort()
-
-                for file in current_file_list:
-                    self.file_count += 1
-
-                    if file.lower().endswith('.jpg'):
-                        # Check if a directory exists in the pictures destination folder with the folder name
-                        if not isdir(self.picture_destination_directory + current_folder):
-                            print "Creating directory: %s" % (self.picture_destination_directory + current_folder)
-                            try:
-                                mkdir(self.picture_destination_directory + current_folder)
-                            except OSError as e:
-                                print "Exception: %s" % str(e)
-
-                        # Check if the file exists in the destination directory
-                        if not isfile(self.picture_destination_directory + current_folder + "/" + file):
-                            # Copy the file to the destination directory
-                            print "Copying %s to %s" % (file, (self.picture_destination_directory + current_folder + '/'))
-                            try:
-                                copy2((current_source_directory + "/" + file), (self.picture_destination_directory + current_folder + '/'))
-                                self.files_copied += 1
-                            except OSError as e:
-                                print "Exception: %s" % str(e)
-                        else:
-                            self.files_not_copied += 1
-
-                    elif file.lower().endswith('.mov'):
-                        # Check if a directory exists in the movies destination folder with the folder name
-                        if not isdir(self.movie_destination_directory + current_folder):
-                            print "Creating directory: %s" % (self.movie_destination_directory + current_folder)
-
-                            try:
-                                mkdir(self.movie_destination_directory + current_folder)
-                            except OSError as e:
-                                print "Exception: %s" % str(e)
-
-                        # Check if the file exists in the movies destination directory
-                        if not isfile(self.movie_destination_directory + current_folder + "/" + file):
-                            # Copy the file to the movies destination directory
-                            print "Copying %s to %s" % (file, (self.movie_destination_directory + current_folder + '/'))
-
-                            try:
-                                copy2((current_source_directory + "/" + file), (self.movie_destination_directory + current_folder + '/'))
-                                self.files_copied += 1
-                            except OSError as e:
-                                print "Exception: %s" % str(e)
-                        else:
-                            self.files_not_copied += 1
-
-                    else:
-                        print "Unrecognized file extension: %s" % file
-                        self.files_not_copied += 1
+                self.file_count += len(current_dir.files)
+                self.files_copied += current_dir.files_copied
+                self.files_not_copied += current_dir.files_not_copied
+                self.files_with_date_found += current_dir.files_with_date_found
+                self.files_without_date_found += current_dir.files_without_date_found

@@ -38,6 +38,7 @@ class Directory(object):
 
     def copy_files_to_destination_directory(self):
         for file in self.files:
+            print file
             if file.lower().endswith('.jpg'):
                 current_file = PictureFile(file, self.directory_path, self.picture_destination_directory)
                 current_file.copy_to_destination_directory()
@@ -47,7 +48,7 @@ class Directory(object):
                 current_file.copy_to_destination_directory()
                 current_file.print_details()
             else:
-                current_file = File(file, '', '')
+                current_file = File(file, self.directory_path, self.movie_destination_directory)
                 print "file extension not found"
 
             if current_file.get_copy_successful():

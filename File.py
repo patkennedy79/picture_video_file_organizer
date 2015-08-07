@@ -25,8 +25,18 @@ class File(object):
         self.source_directory = File.check_directory_name(source_directory)
         self.destination_directory = File.check_directory_name(destination_directory)
         self.file_size = 0
-        self.date_created = ""
         self.copy_successful = False
+        self.date_created = ""
+
+        # Check if the creation date is already included
+        print self.source_directory
+        directories = self.source_directory.split('/')
+        directories = [dir for dir in directories if dir != '']
+        print directories
+        if directories[-1].startswith('20'):
+            self.date_created = directories[-1]
+        else:
+            self.date_created = ""
 
     def print_details(self):
         print "File details:"
