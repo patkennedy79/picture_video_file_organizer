@@ -57,7 +57,7 @@ class DirectoryWithDateSubfolders(object):
             if current_folder_original.lower().startswith('20'):
                 # Replace the character "_" with "-"
                 current_folder = replace(current_folder_original, "_", "-")
-                print "Digital Camera folder: ...%s..." % current_folder
+#                print "Digital Camera folder: ...%s..." % current_folder
 
                 current_dir = Directory((self.directory_path + current_folder_original), self.picture_destination_directory, self.movie_destination_directory)
                 current_dir.copy_files_to_destination_directory()

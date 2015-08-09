@@ -29,10 +29,10 @@ class File(object):
         self.date_created = ""
 
         # Check if the creation date is already included
-        print self.source_directory
+#        print self.source_directory
         directories = self.source_directory.split('/')
         directories = [dir for dir in directories if dir != '']
-        print directories
+#        print directories
         if directories[-1].startswith('20'):
             self.date_created = directories[-1]
         else:
@@ -63,7 +63,7 @@ class File(object):
         # Check if the destination directory exists... if it does not, then
         #   create the directory
         if not isdir(self.destination_directory):
-            print "Destination directory does NOT exist!"
+#            print "Destination directory does NOT exist!"
             try:
                 mkdir(self.destination_directory)
             except OSError as e:
@@ -71,12 +71,12 @@ class File(object):
 
         # Check if the file exists in the destination directory
         if not isfile(self.destination_directory + self.filename):
-            print "File is NOT located in the destination directory!"
-            print "Copying %s to %s" % (self.filename, self.destination_directory)
+#            print "File is NOT located in the destination directory!"
+#            print "Copying %s to %s" % (self.filename, self.destination_directory)
             try:
                 copy2((self.source_directory + self.filename), self.destination_directory)
                 self.copy_successful = True
             except OSError as e:
                 print "Copy2 Exception: %s" % str(e)
-        else:
-            print "File exists in the destination directory."
+#        else:
+#            print "File exists in the destination directory."

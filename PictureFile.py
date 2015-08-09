@@ -27,11 +27,11 @@ class PictureFile(File):
                     photo_date = date_file[0:10]
                     self.date_created = str.replace(photo_date, ":", "-")
                     self.destination_directory += self.date_created + '/'
-                    print "Picture created on %s" % self.date_created
-                    print "Picture dest dir: %s" % self.destination_directory
+#                    print "Picture created on %s" % self.date_created
+#                    print "Picture dest dir: %s" % self.destination_directory
 
             if self.date_created == "":
-                print "***EXIF Date Created not found!!!***"
+#                print "***EXIF Date Created not found!!!***"
                 self.destination_directory += 'no_date_available' + '/'
         else:
             self.destination_directory += self.date_created + '/'

@@ -46,22 +46,22 @@ class VideoFile(File):
                     movie_creation_date_and_time_utc = str(line)[17:len(line)]
 
                     if current_line == "Creation date":
-                        print "Current line: %s" % current_line
-                        print "Found match... %s" % movie_creation_date_and_time_utc
+#                        print "Current line: %s" % current_line
+#                        print "Found match... %s" % movie_creation_date_and_time_utc
 
                         # Process the time extracted from the movie file by converting from
                         #  UTC time (Greenwich Mean Time) to the Pacific time zone
                         utc = datetime.strptime(movie_creation_date_and_time_utc, '%Y-%m-%d %H:%M:%S')
                         utc = utc.replace(tzinfo=from_zone)
                         movie_creation_date_and_time_pacific = utc.astimezone(to_zone)
-                        print "Time/Date: %s" % movie_creation_date_and_time_pacific
+#                        print "Time/Date: %s" % movie_creation_date_and_time_pacific
 
                         # Extract the date from the processed Pacific time
                         movie_creation_date = str(movie_creation_date_and_time_pacific)[0:10]
                         self.date_created = movie_creation_date
                         self.destination_directory += self.date_created + '/'
-                        print "Video created on: %s" % self.date_created
-                        print "Video dest dir: %s" % self.destination_directory
+#                        print "Video created on: %s" % self.date_created
+#                        print "Video dest dir: %s" % self.destination_directory
 
         else:
             self.destination_directory += self.date_created + '/'
