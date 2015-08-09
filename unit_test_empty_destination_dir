@@ -1,0 +1,11 @@
+cd unit_test/destination_dir/
+cd Pictures
+rm -rf *
+cd ../Movies
+rm -rf *
+cd ..
+rm -rf 20*
+rm -rf no_date_available
+rm -f IMG*
+cd ..
+cd ..
