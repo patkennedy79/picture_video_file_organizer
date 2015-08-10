@@ -1,4 +1,5 @@
 from Directory import Directory
+from os import listdir
 
 
 class TestDirectory:
@@ -33,6 +34,20 @@ class TestDirectory:
         assert test_dir.files_with_date_found == 4
         assert test_dir.files_without_date_found == 4
 
+        test_files = {
+            "IMG_6084.JPG" : "./unit_test/destination_dir/Pictures/no_date_available",
+            "IMG_6272.JPG" : "./unit_test/destination_dir/Pictures/no_date_available",
+            "IMG_6285.JPG" : "./unit_test/destination_dir/Pictures/2015-07-17",
+            "IMG_6296.JPG" : "./unit_test/destination_dir/Pictures/2015-07-17",
+            "IMG_6367.JPG" : "./unit_test/destination_dir/Pictures/no_date_available",
+            "IMG_6385.JPG" : "./unit_test/destination_dir/Pictures/no_date_available",
+            "IMG_6781.JPG" : "./unit_test/destination_dir/Pictures/2015-08-06",
+            "IMG_6784.JPG" : "./unit_test/destination_dir/Pictures/2015-08-06"
+        }
+
+        for key, value in test_files.items():
+            assert (key in listdir(value))
+
     def test_copy_second_time(self):
         source_dir_test = "./unit_test/source_dir/Camera Roll"
         picture_destination_dir_test = "./unit_test/destination_dir/Pictures"
@@ -48,3 +63,17 @@ class TestDirectory:
         assert test_dir.files_not_copied == 8
         assert test_dir.files_with_date_found == 4
         assert test_dir.files_without_date_found == 4
+
+        test_files = {
+            "IMG_6084.JPG" : "./unit_test/destination_dir/Pictures/no_date_available",
+            "IMG_6272.JPG" : "./unit_test/destination_dir/Pictures/no_date_available",
+            "IMG_6285.JPG" : "./unit_test/destination_dir/Pictures/2015-07-17",
+            "IMG_6296.JPG" : "./unit_test/destination_dir/Pictures/2015-07-17",
+            "IMG_6367.JPG" : "./unit_test/destination_dir/Pictures/no_date_available",
+            "IMG_6385.JPG" : "./unit_test/destination_dir/Pictures/no_date_available",
+            "IMG_6781.JPG" : "./unit_test/destination_dir/Pictures/2015-08-06",
+            "IMG_6784.JPG" : "./unit_test/destination_dir/Pictures/2015-08-06"
+        }
+
+        for key, value in test_files.items():
+            assert (key in listdir(value))

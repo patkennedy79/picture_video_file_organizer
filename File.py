@@ -1,6 +1,7 @@
 from os.path import isfile, isdir
 from os import mkdir
 from shutil import copy2
+from string import replace
 
 
 """ Purpose: This class defines a file that will be copied from its source
@@ -35,6 +36,7 @@ class File(object):
 #        print directories
         if directories[-1].startswith('20'):
             self.date_created = directories[-1]
+            self.date_created = replace(self.date_created, "_", "-")
         else:
             self.date_created = ""
 

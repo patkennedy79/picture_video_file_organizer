@@ -1,4 +1,5 @@
 from DirectoryWithDateSubfolders import DirectoryWithDateSubfolders
+from os import listdir
 
 
 class TestDirectoryWithDateSubfolders:
@@ -33,6 +34,41 @@ class TestDirectoryWithDateSubfolders:
         assert test_dir.files_with_date_found == 29
         assert test_dir.files_without_date_found == 0
 
+        test_files = {
+            "IMG_0035.JPG" : "./unit_test/destination_dir/Pictures/2014-08-02/",
+            "IMG_0957.JPG" : "./unit_test/destination_dir/Pictures/2014-08-02/",
+            "IMG_0958.JPG" : "./unit_test/destination_dir/Pictures/2014-08-02/",
+            "IMG_6917.MOV" : "./unit_test/destination_dir/Movies/2014-08-02/",
+            "IMG_6781.JPG" : "./unit_test/destination_dir/Pictures/2015-02-28/",
+            "IMG_6782.JPG" : "./unit_test/destination_dir/Pictures/2015-02-28/",
+            "IMG_6785.JPG" : "./unit_test/destination_dir/Pictures/2015-02-28/",
+            "IMG_6781.JPG" : "./unit_test/destination_dir/Pictures/2015-08-02 Blaa",
+            "IMG_6782.JPG" : "./unit_test/destination_dir/Pictures/2015-08-02 Blaa",
+            "IMG_6785.JPG" : "./unit_test/destination_dir/Pictures/2015-08-02 Blaa",
+            "IMG_6781.JPG" : "./unit_test/destination_dir/Pictures/2015-08-02",
+            "IMG_6782.JPG" : "./unit_test/destination_dir/Pictures/2015-08-02",
+            "IMG_6785.JPG" : "./unit_test/destination_dir/Pictures/2015-08-02",
+            "IMG_0035.JPG" : "./unit_test/destination_dir/Pictures/2015-08-04 Blaa2 ",
+            "IMG_6781.JPG" : "./unit_test/destination_dir/Pictures/2015-08-04 Blaa2 ",
+            "IMG_6782.JPG" : "./unit_test/destination_dir/Pictures/2015-08-04 Blaa2 ",
+            "IMG_6785.JPG" : "./unit_test/destination_dir/Pictures/2015-08-04 Blaa2 ",
+            "IMG_6917.MOV" : "./unit_test/destination_dir/Movies/2015-08-04 Blaa2 ",
+            "IMG_6781.JPG" : "./unit_test/destination_dir/Pictures/2015-08-06",
+            "IMG_6782.JPG" : "./unit_test/destination_dir/Pictures/2015-08-06",
+            "IMG_6785.JPG" : "./unit_test/destination_dir/Pictures/2015-08-06",
+            "IMG_6781.JPG" : "./unit_test/destination_dir/Pictures/2015-08-03",
+            "IMG_6782.JPG" : "./unit_test/destination_dir/Pictures/2015-08-03",
+            "IMG_6785.JPG" : "./unit_test/destination_dir/Pictures/2015-08-03",
+            "IMG_6781.JPG" : "./unit_test/destination_dir/Pictures/2015-08-05",
+            "IMG_6782.JPG" : "./unit_test/destination_dir/Pictures/2015-08-05",
+            "IMG_6785.JPG" : "./unit_test/destination_dir/Pictures/2015-08-05",
+            "IMG_6782.JPG" : "./unit_test/destination_dir/Pictures/2015-08-07 Blaa3",
+            "IMG_6917.MOV" : "./unit_test/destination_dir/Movies/2015-08-07 Blaa3"
+        }
+
+        for key, value in test_files.items():
+            assert (key in listdir(value))
+
     def test_copy_second_time(self):
         source_dir_test = "./unit_test/source_dir/Digital Camera"
         picture_destination_dir_test = "./unit_test/destination_dir/Pictures"
@@ -48,3 +84,38 @@ class TestDirectoryWithDateSubfolders:
         assert test_dir.files_not_copied == 29
         assert test_dir.files_with_date_found == 29
         assert test_dir.files_without_date_found == 0
+
+        test_files = {
+            "IMG_0035.JPG" : "./unit_test/destination_dir/Pictures/2014-08-02/",
+            "IMG_0957.JPG" : "./unit_test/destination_dir/Pictures/2014-08-02/",
+            "IMG_0958.JPG" : "./unit_test/destination_dir/Pictures/2014-08-02/",
+            "IMG_6917.MOV" : "./unit_test/destination_dir/Movies/2014-08-02/",
+            "IMG_6781.JPG" : "./unit_test/destination_dir/Pictures/2015-02-28/",
+            "IMG_6782.JPG" : "./unit_test/destination_dir/Pictures/2015-02-28/",
+            "IMG_6785.JPG" : "./unit_test/destination_dir/Pictures/2015-02-28/",
+            "IMG_6781.JPG" : "./unit_test/destination_dir/Pictures/2015-08-02 Blaa",
+            "IMG_6782.JPG" : "./unit_test/destination_dir/Pictures/2015-08-02 Blaa",
+            "IMG_6785.JPG" : "./unit_test/destination_dir/Pictures/2015-08-02 Blaa",
+            "IMG_6781.JPG" : "./unit_test/destination_dir/Pictures/2015-08-02",
+            "IMG_6782.JPG" : "./unit_test/destination_dir/Pictures/2015-08-02",
+            "IMG_6785.JPG" : "./unit_test/destination_dir/Pictures/2015-08-02",
+            "IMG_0035.JPG" : "./unit_test/destination_dir/Pictures/2015-08-04 Blaa2 ",
+            "IMG_6781.JPG" : "./unit_test/destination_dir/Pictures/2015-08-04 Blaa2 ",
+            "IMG_6782.JPG" : "./unit_test/destination_dir/Pictures/2015-08-04 Blaa2 ",
+            "IMG_6785.JPG" : "./unit_test/destination_dir/Pictures/2015-08-04 Blaa2 ",
+            "IMG_6917.MOV" : "./unit_test/destination_dir/Movies/2015-08-04 Blaa2 ",
+            "IMG_6781.JPG" : "./unit_test/destination_dir/Pictures/2015-08-06",
+            "IMG_6782.JPG" : "./unit_test/destination_dir/Pictures/2015-08-06",
+            "IMG_6785.JPG" : "./unit_test/destination_dir/Pictures/2015-08-06",
+            "IMG_6781.JPG" : "./unit_test/destination_dir/Pictures/2015-08-03",
+            "IMG_6782.JPG" : "./unit_test/destination_dir/Pictures/2015-08-03",
+            "IMG_6785.JPG" : "./unit_test/destination_dir/Pictures/2015-08-03",
+            "IMG_6781.JPG" : "./unit_test/destination_dir/Pictures/2015-08-05",
+            "IMG_6782.JPG" : "./unit_test/destination_dir/Pictures/2015-08-05",
+            "IMG_6785.JPG" : "./unit_test/destination_dir/Pictures/2015-08-05",
+            "IMG_6782.JPG" : "./unit_test/destination_dir/Pictures/2015-08-07 Blaa3",
+            "IMG_6917.MOV" : "./unit_test/destination_dir/Movies/2015-08-07 Blaa3"
+        }
+
+        for key, value in test_files.items():
+            assert (key in listdir(value))
