@@ -5,6 +5,7 @@ Python application to organizer picture and video files from multiple sources in
 ## What Does This Tool Do?
 
 INSERT DIAGRAM
+![Alt text](/Documentation/Picture and Video File Organizer.png?raw=true "Picture and Video File Organizer")
 
 ## Motivation
 
@@ -14,7 +15,7 @@ Given all of the different devices that take pictures and videos, it can be real
 
 In the top-level file (picture_video_file_organizer.py), set the source and destination directories.  Run using:
     % python picture_video_file_organizer.py
-    
+
 ## Key Python Modules Used
 
 - ExifRead: extracts metadata from picture files
