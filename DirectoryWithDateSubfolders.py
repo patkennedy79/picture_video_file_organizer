@@ -43,7 +43,7 @@ class DirectoryWithDateSubfolders(object):
         self.files_without_date_found = 0
 
     def print_details(self):
-        print "Directory details:"
+        print "  Directory details:"
         print "    Directory path: %s" % self.directory_path
         print "    Picture Destination directory: %s" % self.picture_destination_directory
         print "    Movie Destination directory: %s" % self.movie_destination_directory
@@ -55,10 +55,6 @@ class DirectoryWithDateSubfolders(object):
     def copy_files_to_destination_directory(self):
         for current_folder_original in self.directories:
             if current_folder_original.lower().startswith('20'):
-                # Replace the character "_" with "-"
-                current_folder = replace(current_folder_original, "_", "-")
-#                print "Digital Camera folder: ...%s..." % current_folder
-
                 current_dir = Directory((self.directory_path + current_folder_original), self.picture_destination_directory, self.movie_destination_directory)
                 current_dir.copy_files_to_destination_directory()
                 current_dir.print_details
