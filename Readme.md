@@ -3,8 +3,6 @@
 Python application to organizer picture and video files from multiple sources into a set of directories organized by date.
 
 ## What Does This Tool Do?
-
-INSERT DIAGRAM
 ![Alt text](/Documentation/Picture and Video File Organizer.png?raw=true "Picture and Video File Organizer")
 
 ## Motivation
