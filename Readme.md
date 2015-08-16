@@ -26,7 +26,7 @@ This application is written using Python 2.x, as the hachoir-metadata package ca
 NOTE: These instructions are for setting up and running the unit tests on OS X.
 
 Before attempting to run the unit tests, you need to make sure that the Python interpreter can find the PictureVideoFileOrganizer module.  The easiest way to make this happen is to set your PYTHONPATH to check the top-level directory of the module.  For example, I have my PYTHONPATH set in my ~/.profile file:
-    PYTHONPATH="$PYTHONPATH:/Users/patrickkennedy/Documents/Workspace/PictureVideoFileOrganizer"
+    PYTHONPATH="$PYTHONPATH:/Users/patrickkennedy/Documents/Workspace/PictureVideoFileOrganizer/"
     export PYTHONPATH
 If you edit your ~/.profile file and want to implement it without restarting your terminal window, just "source ~/.profile".
 
