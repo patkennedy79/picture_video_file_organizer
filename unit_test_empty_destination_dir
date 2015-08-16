@@ -1,4 +1,4 @@
-cd unit_test/destination_dir/
+cd PictureVideoFileOrganizer/unit_test/destination_dir/
 cd Pictures
 rm -rf *
 touch Readme.txt
@@ -9,5 +9,6 @@ cd ..
 rm -rf 20*
 rm -rf no_date_available
 rm -f IMG*
+cd ..
 cd ..
 cd ..

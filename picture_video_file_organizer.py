@@ -1,7 +1,7 @@
-from PictureFile import PictureFile
-from VideoFile import VideoFile
-from Directory import Directory
-from DirectoryWithDateSubfolders import DirectoryWithDateSubfolders
+from PictureVideoFileOrganizer import PictureFile
+from PictureVideoFileOrganizer import VideoFile
+from PictureVideoFileOrganizer import Directory
+from PictureVideoFileOrganizer import DirectoryWithDateSubfolders
 from datetime import datetime
 
 """
